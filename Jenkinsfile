@@ -20,11 +20,16 @@ pipeline {
                 '''
             }
         }
+
+        stage('Test') {
             steps {
                 sh '''
-                echo 'Test -f build/index.html'
-                npm test
-            '''
+                    echo "Vérification du fichier build/index.html"
+                    test -f build/index.html
+                    echo "Lancement des tests..."
+                    npm test
+                '''
+            }
         }
     }
 }
