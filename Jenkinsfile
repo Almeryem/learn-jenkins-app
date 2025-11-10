@@ -6,28 +6,36 @@ pipeline {
         }
     }
 
+    environment {
+        CI = 'true'
+    }
+
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install') {
+            steps {
+                sh 'npm ci'
+            }
+        }
+
         stage('Build') {
             steps {
-                sh '''
-                    ls -la
-                    node --version
-                    npm --version
-                    npm ci
-                    npm run build
-                    ls -la
-                '''
+                sh 'npm run build'
             }
         }
 
         stage('Test') {
             steps {
                 sh '''
-                    test -f build/index.html
+                    mkdir -p test-results
                     npm test
                 '''
             }
         }
     }
-
-  
+}
