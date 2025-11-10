@@ -28,5 +28,9 @@ pipeline {
                 '''
             }
         }
+    } post {
+        always {
+            juinit'test-examples/demo-todo-app.spec.js'
+        }
     }
 }
