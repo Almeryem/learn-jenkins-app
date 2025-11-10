@@ -30,9 +30,4 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            junit 'test-examples/demo-todo-app.spec.js'
-        }
-    }
-}
+  
