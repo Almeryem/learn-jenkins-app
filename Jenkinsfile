@@ -24,9 +24,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                    echo "Vérification du fichier build/index.html"
-                    test -f build/index.html
-                    echo "Lancement des tests..."
+                    echo 'Test -f build/index.html'
                     npm test
                 '''
             }
