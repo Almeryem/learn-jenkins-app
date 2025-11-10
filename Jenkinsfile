@@ -28,9 +28,11 @@ pipeline {
                 '''
             }
         }
-    } post {
+    }
+
+    post {
         always {
-            juinit'test-examples/demo-todo-app.spec.js'
+            junit 'test-examples/demo-todo-app.spec.js'
         }
     }
 }
